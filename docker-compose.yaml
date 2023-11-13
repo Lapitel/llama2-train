@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  llama_ft_env:
+    image: lapitel/pytorch-2.0.0-cuda11.7-cudnn8-devel:1.0.0
+    environment:
+      NVIDIA_VISIBLE_DEVICES: all
+    volumes:
+      - ./:/workspace/
+    ports: 
+      - "19005:8888"
+    container_name: llama_ft_env
+    stdin_open: true
+    tty: true
+    command: /usr/bin/nohup /opt/conda/bin/jupyter lab --no-browser --allow-root >/dev/null 2>&1 &"
